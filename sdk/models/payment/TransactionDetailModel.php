@@ -1,5 +1,11 @@
 <?php
 
+namespace h3tech\barion\sdk\models\payment;
+
+use h3tech\barion\sdk\helpers\iBarionModel;
+use h3tech\barion\sdk\models\common\UserModel;
+use h3tech\barion\sdk\models\common\ItemModel;
+
 /**
  * Copyright 2016 Barion Payment Inc. All Rights Reserved.
  * <p/>

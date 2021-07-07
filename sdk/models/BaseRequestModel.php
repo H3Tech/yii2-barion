@@ -1,5 +1,7 @@
 <?php
 
+namespace h3tech\barion\sdk\models;
+
 /**
  * Copyright 2016 Barion Payment Inc. All Rights Reserved.
  * <p/>

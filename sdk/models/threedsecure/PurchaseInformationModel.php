@@ -1,5 +1,10 @@
 <?php
 
+namespace h3tech\barion\sdk\models\threedsecure;
+
+use h3tech\barion\sdk\helpers\iBarionModel;
+use h3tech\barion\sdk\helpers\BarionHelper;
+
 /**
  * Copyright 2016 Barion Payment Inc. All Rights Reserved.
  * <p/>
@@ -47,17 +52,17 @@ class PurchaseInformationModel implements iBarionModel
     public function fromJson($json)
     {
         if (!empty($json)) {
-            $this->DeliveryTimeframe = jget($json, 'DeliveryTimeframe');
-            $this->DeliveryEmailAddress = jget($json, 'DeliveryEmailAddress');
-            $this->PreOrderDate = jget($json, 'PreOrderDate');
-            $this->AvailabilityIndicator = jget($json, 'AvailabilityIndicator');
-            $this->ReOrderIndicator = jget($json, 'ReOrderIndicator');
-            $this->RecurringExpiry = jget($json, 'RecurringExpiry');
-            $this->RecurringFrequency = jget($json, 'RecurringFrequency');
-            $this->ShippingAddressIndicator = jget($json, 'ShippingAddressIndicator');
-            $this->GiftCardPurchase = jget($json, 'GiftCardPurchase');
-            $this->PurchaseType = jget($json, 'PurchaseType');
-            $this->PurchaseDate = jget($json, 'PurchaseDate');
+            $this->DeliveryTimeframe = BarionHelper::jget($json, 'DeliveryTimeframe');
+            $this->DeliveryEmailAddress = BarionHelper::jget($json, 'DeliveryEmailAddress');
+            $this->PreOrderDate = BarionHelper::jget($json, 'PreOrderDate');
+            $this->AvailabilityIndicator = BarionHelper::jget($json, 'AvailabilityIndicator');
+            $this->ReOrderIndicator = BarionHelper::jget($json, 'ReOrderIndicator');
+            $this->RecurringExpiry = BarionHelper::jget($json, 'RecurringExpiry');
+            $this->RecurringFrequency = BarionHelper::jget($json, 'RecurringFrequency');
+            $this->ShippingAddressIndicator = BarionHelper::jget($json, 'ShippingAddressIndicator');
+            $this->GiftCardPurchase = BarionHelper::jget($json, 'GiftCardPurchase');
+            $this->PurchaseType = BarionHelper::jget($json, 'PurchaseType');
+            $this->PurchaseDate = BarionHelper::jget($json, 'PurchaseDate');
         }
     }
 }

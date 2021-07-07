@@ -1,5 +1,11 @@
 <?php
 
+namespace h3tech\barion\sdk\models\refund;
+
+use h3tech\barion\sdk\models\BaseResponseModel;
+use h3tech\barion\sdk\helpers\iBarionModel;
+use h3tech\barion\sdk\helpers\BarionHelper;
+
 /**
  * Copyright 2016 Barion Payment Inc. All Rights Reserved.
  * <p/>
@@ -32,7 +38,7 @@ class RefundResponseModel extends BaseResponseModel implements iBarionModel
         if (!empty($json)) {
             parent::fromJson($json);
 
-            $this->PaymentId = jget($json, 'PaymentId');
+            $this->PaymentId = BarionHelper::jget($json, 'PaymentId');
             $this->RefundedTransactions = array();
 
             if (!empty($json['RefundedTransactions'])) {

@@ -1,5 +1,10 @@
 <?php
 
+namespace h3tech\barion\sdk\models\payment;
+
+use h3tech\barion\sdk\models\BaseRequestModel;
+use h3tech\barion\sdk\enumerations\QRCodeSize;
+
 /**
  * Copyright 2016 Barion Payment Inc. All Rights Reserved.
  * <p/>

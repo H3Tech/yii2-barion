@@ -1,5 +1,10 @@
 <?php
 
+namespace h3tech\barion\sdk\models\common;
+
+use h3tech\barion\sdk\helpers\iBarionModel;
+use h3tech\barion\sdk\helpers\BarionHelper;
+
 /**
  * Copyright 2016 Barion Payment Inc. All Rights Reserved.
  * <p/>
@@ -32,9 +37,9 @@ class FundingInformationModel implements iBarionModel
     {
         if (!empty($json)) {
             $this->BankCard = new BankCardModel();
-            $this->BankCard->fromJson(jget($json, 'BankCard'));
-            $this->AuthorizationCode = jget($json, 'AuthorizationCode');
-            $this->ProcessResult = jget($json, 'ProcessResult');
+            $this->BankCard->fromJson(BarionHelper::jget($json, 'BankCard'));
+            $this->AuthorizationCode = BarionHelper::jget($json, 'AuthorizationCode');
+            $this->ProcessResult = BarionHelper::jget($json, 'ProcessResult');
         }
     }
 }

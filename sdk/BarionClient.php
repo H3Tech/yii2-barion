@@ -1,5 +1,26 @@
 <?php
 
+namespace h3tech\barion\sdk;
+
+use h3tech\barion\sdk\enumerations\BarionEnvironment;
+use h3tech\barion\sdk\models\ApiErrorModel;
+use h3tech\barion\sdk\models\BaseResponseModel;
+use h3tech\barion\sdk\models\payment\CancelAuthorizationRequestModel;
+use h3tech\barion\sdk\models\payment\CancelAuthorizationResponseModel;
+use h3tech\barion\sdk\models\payment\CaptureRequestModel;
+use h3tech\barion\sdk\models\payment\CaptureResponseModel;
+use h3tech\barion\sdk\models\payment\Complete3DSPaymentRequestModel;
+use h3tech\barion\sdk\models\payment\Complete3DSPaymentResponseModel;
+use h3tech\barion\sdk\models\payment\FinishReservationRequestModel;
+use h3tech\barion\sdk\models\payment\FinishReservationResponseModel;
+use h3tech\barion\sdk\models\payment\PaymentQRRequestModel;
+use h3tech\barion\sdk\models\payment\PaymentStateRequestModel;
+use h3tech\barion\sdk\models\payment\PaymentStateResponseModel;
+use h3tech\barion\sdk\models\payment\PreparePaymentRequestModel;
+use h3tech\barion\sdk\models\payment\PreparePaymentResponseModel;
+use h3tech\barion\sdk\models\refund\RefundRequestModel;
+use h3tech\barion\sdk\models\refund\RefundResponseModel;
+
 /**
  * Copyright 2016 Barion Payment Inc. All Rights Reserved.
  * <p/>
@@ -22,8 +43,6 @@
 *  PHP library for implementing REST API calls towards the Barion payment system.  
 *  
 */
-
-include 'helpers' . DIRECTORY_SEPARATOR . 'loader.php';
 
 class BarionClient
 {
@@ -114,7 +133,7 @@ class BarionClient
         }
         return $rm;
     }
-    
+
     /**
      *
      * Capture the previously authorized money in a Delayed Capture payment
@@ -154,7 +173,7 @@ class BarionClient
         }
         return $cancelAuthResponse;
     }
-    
+
     /**
      * Complete a previously 3DSecure-authenticated payment
      *
@@ -254,7 +273,7 @@ class BarionClient
     private function PostToBarion($url, $data)
     {
         $ch = curl_init();
-        
+
         $userAgent = $_SERVER['HTTP_USER_AGENT'];
         if ($userAgent == "") {
             $cver = curl_version();
@@ -268,7 +287,7 @@ class BarionClient
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json", "User-Agent: $userAgent"));
-        
+
         if(substr(phpversion(), 0, 3) < 5.6) {
             curl_setopt($ch, CURLOPT_SSLVERSION, 6);
         }
@@ -311,7 +330,7 @@ class BarionClient
 
         $getData = http_build_query($data);
         $fullUrl = $url . '?' . $getData;
-        
+
         $userAgent = $_SERVER['HTTP_USER_AGENT'];
         if ($userAgent == "") {
             $cver = curl_version();
@@ -321,7 +340,7 @@ class BarionClient
         curl_setopt($ch, CURLOPT_URL, $fullUrl);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array("User-Agent: $userAgent"));
-        
+
         if(substr(phpversion(), 0, 3) < 5.6) {
             curl_setopt($ch, CURLOPT_SSLVERSION, 6);
         }

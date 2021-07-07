@@ -1,5 +1,12 @@
 <?php
 
+namespace h3tech\barion\sdk\models\payment;
+
+use h3tech\barion\sdk\models\BaseRequestModel;
+use h3tech\barion\sdk\enumerations\PaymentType;
+use h3tech\barion\sdk\enumerations\FundingSourceType;
+use h3tech\barion\sdk\enumerations\Currency;
+
 /**
  * Copyright 2016 Barion Payment Inc. All Rights Reserved.
  * <p/>

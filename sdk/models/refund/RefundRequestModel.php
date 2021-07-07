@@ -1,5 +1,10 @@
 <?php
 
+namespace h3tech\barion\sdk\models\refund;
+
+use h3tech\barion\sdk\models\BaseRequestModel;
+use h3tech\barion\sdk\models\payment\TransactionToRefundModel;
+
 /**
  * Copyright 2016 Barion Payment Inc. All Rights Reserved.
  * <p/>

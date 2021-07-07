@@ -1,5 +1,10 @@
 <?php
 
+namespace h3tech\barion\sdk\models\common;
+
+use h3tech\barion\sdk\helpers\iBarionModel;
+use h3tech\barion\sdk\helpers\BarionHelper;
+
 /**
  * Copyright 2016 Barion Payment Inc. All Rights Reserved.
  * <p/>
@@ -33,10 +38,10 @@ class BankCardModel implements iBarionModel
     public function fromJson($json)
     {
         if (!empty($json)) {
-            $this->MaskedPan = jget($json, 'MaskedPan');
-            $this->BankCardType = jget($json, 'BankCardType');
-            $this->ValidThruYear = jget($json, 'ValidThruYear');
-            $this->ValidThruMonth = jget($json, 'ValidThruMonth');
+            $this->MaskedPan = BarionHelper::jget($json, 'MaskedPan');
+            $this->BankCardType = BarionHelper::jget($json, 'BankCardType');
+            $this->ValidThruYear = BarionHelper::jget($json, 'ValidThruYear');
+            $this->ValidThruMonth = BarionHelper::jget($json, 'ValidThruMonth');
         }
     }
 }

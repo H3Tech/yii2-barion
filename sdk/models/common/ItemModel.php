@@ -1,5 +1,10 @@
 <?php
 
+namespace h3tech\barion\sdk\models\common;
+
+use h3tech\barion\sdk\helpers\BarionHelper;
+use h3tech\barion\sdk\helpers\iBarionModel;
+
 /**
  * Copyright 2016 Barion Payment Inc. All Rights Reserved.
  * <p/>
@@ -39,13 +44,13 @@ class ItemModel implements iBarionModel
     public function fromJson($json)
     {
         if (!empty($json)) {
-            $this->Name = jget($json, 'Name');
-            $this->Description = jget($json, 'Description');
-            $this->Quantity = jget($json, 'Quantity');
-            $this->Unit = jget($json, 'Unit');
-            $this->UnitPrice = jget($json, 'UnitPrice');
-            $this->ItemTotal = jget($json, 'ItemTotal');
-            $this->SKU = jget($json, 'SKU');
+            $this->Name = BarionHelper::jget($json, 'Name');
+            $this->Description = BarionHelper::jget($json, 'Description');
+            $this->Quantity = BarionHelper::jget($json, 'Quantity');
+            $this->Unit = BarionHelper::jget($json, 'Unit');
+            $this->UnitPrice = BarionHelper::jget($json, 'UnitPrice');
+            $this->ItemTotal = BarionHelper::jget($json, 'ItemTotal');
+            $this->SKU = BarionHelper::jget($json, 'SKU');
         }
     }
 }

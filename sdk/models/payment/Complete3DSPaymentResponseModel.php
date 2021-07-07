@@ -1,5 +1,11 @@
 <?php
 
+namespace h3tech\barion\sdk\models\payment;
+
+use h3tech\barion\sdk\helpers\BarionHelper;
+use h3tech\barion\sdk\models\BaseResponseModel;
+use h3tech\barion\sdk\helpers\iBarionModel;
+
 /**
  * Copyright 2016 Barion Payment Inc. All Rights Reserved.
  * <p/>
@@ -38,11 +44,11 @@ class Complete3DSPaymentResponseModel extends BaseResponseModel implements iBari
         if (!empty($json)) {
             parent::fromJson($json);
 
-            $this->PaymentId = jget($json, 'PaymentId');
-            $this->PaymentRequestId = jget($json, 'PaymentRequestId');
-            $this->Status = jget($json, 'PaymentStatus');
-            $this->IsSuccessful = jget($json, 'IsSuccessful');
-            $this->TraceId = jget($json, 'TraceId');
+            $this->PaymentId = BarionHelper::jget($json, 'PaymentId');
+            $this->PaymentRequestId = BarionHelper::jget($json, 'PaymentRequestId');
+            $this->Status = BarionHelper::jget($json, 'PaymentStatus');
+            $this->IsSuccessful = BarionHelper::jget($json, 'IsSuccessful');
+            $this->TraceId = BarionHelper::jget($json, 'TraceId');
         }
     }
 }

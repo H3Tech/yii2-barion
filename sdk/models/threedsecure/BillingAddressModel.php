@@ -1,5 +1,10 @@
 <?php
 
+namespace h3tech\barion\sdk\models\threedsecure;
+
+use h3tech\barion\sdk\helpers\iBarionModel;
+use h3tech\barion\sdk\helpers\BarionHelper;
+
 /**
  * Copyright 2016 Barion Payment Inc. All Rights Reserved.
  * <p/>
@@ -39,13 +44,13 @@ class BillingAddressModel implements iBarionModel
     public function fromJson($json)
     {
         if (!empty($json)) {
-            $this->Country = jget($json, 'Country');
-            $this->Region = jget($json, 'Region');
-            $this->City = jget($json, 'City');
-            $this->Zip = jget($json, 'Zip');
-            $this->Street = jget($json, 'Street');
-            $this->Street2 = jget($json, 'Street2');
-            $this->Street3 = jget($json, 'Street3');
+            $this->Country = BarionHelper::jget($json, 'Country');
+            $this->Region = BarionHelper::jget($json, 'Region');
+            $this->City = BarionHelper::jget($json, 'City');
+            $this->Zip = BarionHelper::jget($json, 'Zip');
+            $this->Street = BarionHelper::jget($json, 'Street');
+            $this->Street2 = BarionHelper::jget($json, 'Street2');
+            $this->Street3 = BarionHelper::jget($json, 'Street3');
         }
     }
 }

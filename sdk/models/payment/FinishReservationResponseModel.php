@@ -1,5 +1,11 @@
 <?php
 
+namespace h3tech\barion\sdk\models\payment;
+
+use h3tech\barion\sdk\models\BaseResponseModel;
+use h3tech\barion\sdk\helpers\iBarionModel;
+use h3tech\barion\sdk\helpers\BarionHelper;
+
 /**
  * Copyright 2016 Barion Payment Inc. All Rights Reserved.
  * <p/>
@@ -38,10 +44,10 @@ class FinishReservationResponseModel extends BaseResponseModel implements iBario
         if (!empty($json)) {
             parent::fromJson($json);
 
-            $this->IsSuccessful = jget($json, 'IsSuccessful');
-            $this->PaymentId = jget($json, 'PaymentId');
-            $this->PaymentRequestId = jget($json, 'PaymentRequestId');
-            $this->Status = jget($json, 'Status');
+            $this->IsSuccessful = BarionHelper::jget($json, 'IsSuccessful');
+            $this->PaymentId = BarionHelper::jget($json, 'PaymentId');
+            $this->PaymentRequestId = BarionHelper::jget($json, 'PaymentRequestId');
+            $this->Status = BarionHelper::jget($json, 'Status');
 
             $this->Transactions = array();
 

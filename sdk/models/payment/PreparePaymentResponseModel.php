@@ -1,5 +1,11 @@
 <?php
 
+namespace h3tech\barion\sdk\models\payment;
+
+use h3tech\barion\sdk\models\BaseResponseModel;
+use h3tech\barion\sdk\helpers\iBarionModel;
+use h3tech\barion\sdk\helpers\BarionHelper;
+
 /**
  * Copyright 2016 Barion Payment Inc. All Rights Reserved.
  * <p/>
@@ -45,13 +51,13 @@ class PreparePaymentResponseModel extends BaseResponseModel implements iBarionMo
     {
         if (!empty($json)) {
             parent::fromJson($json);
-            $this->PaymentId = jget($json, 'PaymentId');
-            $this->PaymentRequestId = jget($json, 'PaymentRequestId');
-            $this->Status = jget($json, 'Status');
-            $this->QRUrl = jget($json, 'QRUrl');
-            $this->RecurrenceResult = jget($json, 'RecurrenceResult');
-            $this->ThreeDSAuthClientData = jget($json, 'ThreeDSAuthClientData');
-            $this->TraceId = jget($json, 'TraceId');
+            $this->PaymentId = BarionHelper::jget($json, 'PaymentId');
+            $this->PaymentRequestId = BarionHelper::jget($json, 'PaymentRequestId');
+            $this->Status = BarionHelper::jget($json, 'Status');
+            $this->QRUrl = BarionHelper::jget($json, 'QRUrl');
+            $this->RecurrenceResult = BarionHelper::jget($json, 'RecurrenceResult');
+            $this->ThreeDSAuthClientData = BarionHelper::jget($json, 'ThreeDSAuthClientData');
+            $this->TraceId = BarionHelper::jget($json, 'TraceId');
             $this->Transactions = array();
 
             if (!empty($json['Transactions'])) {
