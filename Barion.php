@@ -9,7 +9,12 @@ use h3tech\barion\sdk\models\payment\PreparePaymentRequestModel;
 use yii\base\Component;
 use yii\base\InvalidConfigException;
 use yii\web\UrlManager;
+use Yii;
 
+/**
+ * @property string $webUrl read-only
+ * @property string $callbackUrl read-only
+ */
 class Barion extends Component
 {
     const BARION_API_URL_PROD = 'https://api.barion.com';
@@ -30,7 +35,8 @@ class Barion extends Component
     public $payee;
     public $posKey;
     public $pixelId;
-    public $callbackUrl;
+    public $callbackUrlManager;
+    protected $callbackUrlRoute;
 
     public $defaultUiLocale = UILocale::EN;
 
@@ -79,11 +85,32 @@ class Barion extends Component
 
     public function getPaymentUrl($paymentId)
     {
-        return $this->getWebUrl() . '?id=' . $paymentId;
+        return $this->webUrl . '?id=' . $paymentId;
     }
 
     public function preparePayment(PreparePaymentRequestModel $request)
     {
         return $this->createClient()->PreparePayment($request);
+    }
+
+    public function setCallbackUrlRoute($route)
+    {
+        if (is_array($route)) {
+            $this->callbackUrlRoute = $route;
+        } else {
+            throw new InvalidConfigException('callbackUrlRoute must be an array');
+        }
+    }
+
+    public function getCallbackUrlRoute()
+    {
+        return $this->callbackUrlRoute;
+    }
+
+    public function getCallbackUrl()
+    {
+        /* @var UrlManager $urlManager */
+        $urlManager = Yii::$app->get($this->callbackUrlManager);
+        return $urlManager->createAbsoluteUrl($this->callbackUrlRoute, true);
     }
 }
